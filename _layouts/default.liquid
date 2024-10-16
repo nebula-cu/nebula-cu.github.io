@@ -33,7 +33,7 @@
 .nav-link.btn-dark:hover,
 .nav-link.btn-dark:focus {
   background-color: rgb(204, 209, 205); /* Light greenish-gray */
-  color: black; 
+  color: black !important; 
   border: 1.5px solid black;
 }
 /* Ensure content starts after the navbar */
@@ -78,7 +78,7 @@ body {
     {% include header.liquid %}
 
     <!-- Content -->
-    <div class="container mt-5" role="main" style="max-width: 800px;">
+    <div class="container mt-5" role="main" style="max-width: 1100px;">
       {% if page.toc and page.toc.sidebar %}
         {% if page.toc.sidebar == 'right' %}
           <div class="row">

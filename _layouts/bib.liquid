@@ -5,7 +5,7 @@
 .links .btn-light {
   background-color: rgb(204, 209, 205); /* Light greenish-gray */
   color: black !important;
-  border: 1.5px solid black;
+  border: 1.5px solid black !important;
   transition: all 0.3s ease;
   padding: 2px 4px; /* Reduced padding for smaller height */
   font-size: 0.85rem; /* Smaller font size */
@@ -15,21 +15,21 @@
 /* Hover or focus: btn-light takes on btn-dark characteristics */
 .links .btn-light:focus {
   background-color: #4a5568; /* Dark gray-blue */
-  color: black;
-  border: 1.5px solid black;
+  color: black !important;
+  border: 1.5px solid black !important;
 }
 
 .links .btn-light:hover {
   background-color: #4a5568; /* Dark gray-blue */
   color: white !important;
-  border: 1.5px solid black;
+  border: 1.5px solid black !important;
 }
 
 /* Active button (btn-dark) */
 .links .btn-dark {
   background-color: #4a5568; /* Dark gray-blue */
   color: white;
-  border: 1.5px solid black;
+  border: 1.5px solid black !important;
   transition: all 0.3s ease;
   padding: 2px 4px; /* Reduced padding for smaller height */
   font-size: 0.85rem; /* Smaller font size */
@@ -40,8 +40,8 @@
 .links .btn-dark:hover,
 .links .btn-dark:focus {
   background-color: rgb(204, 209, 205); /* Light greenish-gray */
-  color: black; 
-  border: 1.5px solid black;
+  color: black !important; 
+  border: 1.5px solid black !important;
 }
   </style>
 

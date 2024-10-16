@@ -8,9 +8,9 @@
   --global-bg-color: #{$white-color};
   --global-code-bg-color: #{$code-bg-color-light};
   --global-text-color: #{$black-color};
-  --global-text-color-light: #{$grey-color};
-  --global-theme-color: #{$purple-color};
-  --global-hover-color: #{$purple-color};
+  --global-text-color-light: rgb(71, 137, 218); // Columbia light blue
+  --global-theme-color: rgb(5, 28, 104); // Columbia blue
+  --global-hover-color: rgb(111, 168, 224);
   --global-hover-text-color: #{$white-color};
   --global-footer-bg-color: #{$grey-color-dark};
   --global-footer-text-color: #{$grey-color-light};
