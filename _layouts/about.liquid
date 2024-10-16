@@ -3,66 +3,128 @@ layout: default
 ---
 <div class="post">
   <header class="post-header">
-    <h1 class="post-title">
-      {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-      {% else %}
+    {% comment %} <h1 class="post-title">
         {{ site.title }}
-      {% endif %}
-    </h1>
-    <p class="desc">{{ page.subtitle }}</p>
+    </h1> {% endcomment %}
   </header>
 
   <article>
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
-          {% endif %}
-          {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
-        {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
+    <div class="card w-100 mb-4">
+      <div class="card-content">
+        <div class="card-body">
+          <h2 class="card-title">About Us</h2>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <img 
+            class="img-fluid w-50" 
+            src="/assets/img/prof_pic.jpg" 
+            alt="Profile Picture">
+            
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+          </p>
+        </div>
+
       </div>
-    {% endif %}
+    </div>
 
     <div class="clearfix">{{ content }}</div>
 
     <!-- News -->
     {% if page.news and site.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
-      </h2>
-      {% include news.liquid limit=true %}
-    {% endif %}
-
-    <!-- Latest posts -->
-    {% if site.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
-    {% endif %}
+      <div class="card w-100 mt-4">
+        <div class="card-header" style="padding-top: 10px; padding-bottom:10px">
+          <h2 class="card-title">Latest News</h2>
+        </div>
+        <div class="card-body">
+          <div class="news-list">
+            {% include news.liquid limit=true %}
+          </div>
+        </div>
+        {% comment %} <div class="card-footer">
+          <a href="{{ '/news/' | relative_url }}" class="btn btn-primary">View All News</a>
+        </div> {% endcomment %}
+      </div>
+      {% endif %}
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
-      </h2>
-      {% include selected_papers.liquid %}
+      <div class="card w-100 mt-4">
+        <div class="card-header" style="padding-top: 10px; padding-bottom: 10px;">
+          <h2 class="card-title">
+            <a href="{{ '/publications/' | relative_url }}" style="color: inherit;">Selected Publications</a>
+          </h2>
+        </div>
+        <div class="card-body">
+          <div class="publications-list">
+            {% include selected_papers.liquid %}
+          </div>
+        </div>
+        {% comment %}
+        <div class="card-footer">
+          <a href="{{ '/publications/' | relative_url }}" class="btn btn-light-primary">View All Publications</a>
+        </div>
+        {% endcomment %}
+      </div>
     {% endif %}
+
+
+    <section id="about-profiles">
+      <div class="row match-height">
+        <div class="col-12 mt-3 mb-1">
+          <h4 class="section-title text-uppercase">Our Team</h4>
+        </div>
+      </div>
+    
+      <div class="row match-height">
+        <div class="col-12">
+          <div class="card-group">
+            {% assign total_profiles = site.members | size %}
+            {% assign members_per_row = 2 %} <!-- Always 2 members per row -->
+            {% assign num_rows = total_profiles | divided_by: 2 %}
+    
+            {% for profile in site.members %}
+              {% assign current_index = forloop.index0 %}
+              {% assign is_new_row = current_index | modulo: members_per_row %}
+    
+              <!-- Start a new row every 2 profiles -->
+              {% if current_index != 0 and is_new_row == 0 %}
+                </div><div class="card-group mt-4">
+              {% endif %}
+    
+              <!-- Profile Card -->
+              <div class="card">
+                <div class="card-content">
+                  {% if profile.photo %}
+                    <img 
+                      class="card-img-top img-fluid rounded-circle" 
+                      src="/assets/img/{{ profile.photo }}" 
+                      alt="Photo of {{ profile.givenname }} {{ profile.surname }}" 
+                    />
+                  {% endif %}
+    
+                  <div class="card-body">
+                    <h4 class="card-title">{{ profile.givenname }} {{ profile.surname }}</h4>
+                    <p class="card-text">
+                      <strong>Role:</strong> {{ profile.role }}
+                    </p>
+                    <div class="more-info">
+                      {{ profile.more_info }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Social -->
     {% if page.social %}
