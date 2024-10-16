@@ -1,0 +1,62 @@
+<div class="row match-height"></div>
+    <div class="col-12 mt-3 mb-1">
+      <h2 class="section-title text-uppercase">Our Team</h2>
+    </div>
+  </div>
+
+  <div class="row match-height">
+    <div class="col-12">
+      <div class="card-group">
+        {% assign total_profiles = site.members | size %}
+        {% assign members_per_row = 2 %} <!-- 2 Members per row -->
+        {% assign num_rows = total_profiles | divided_by: 2 %}
+
+        {% for profile in site.members %}
+          {% assign current_index = forloop.index0 %}
+          {% assign is_new_row = current_index | modulo: members_per_row %}
+
+          <!-- Start a new row every 2 profiles -->
+          {% if current_index != 0 and is_new_row == 0 %}
+            </div><div class="card-group mt-4">
+          {% endif %}
+
+          <!-- Profile Card -->
+          <div class="card">
+            <div class="card-content">
+              {% if profile.image %}
+                <img 
+                  class="card-img-top img-fluid rounded-circle" 
+                  src="/assets/img/{{ profile.image }}" 
+                  alt="Photo of {{ profile.givenname }} {{ profile.surname }}" 
+                />
+              {% endif %}
+
+              <div class="card-body">
+                <h4 class="card-title">{{ profile.givenname }} {{ profile.surname }}</h4>
+                <p><strong>Role:</strong> {{ profile.member_category }}</p>
+                <p><strong>Interests:</strong> {{ profile.interests }}</p>
+                <p>{{ profile.summary }}</p>
+                <ul class="list-inline">
+                  {% if profile.github %}
+                    <li class="list-inline-item">
+                      <a href="https://github.com/{{ profile.github }}" target="_blank">GitHub</a>
+                    </li>
+                  {% endif %}
+                  {% if profile.linkedin %}
+                    <li class="list-inline-item">
+                      <a href="https://linkedin.com/in/{{ profile.linkedin }}" target="_blank">LinkedIn</a>
+                    </li>
+                  {% endif %}
+                  {% if profile.twitter %}
+                    <li class="list-inline-item">
+                      <a href="https://twitter.com/{{ profile.twitter }}" target="_blank">Twitter</a>
+                    </li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div> <!-- End of Card Group -->
+    </div>
+</div>
