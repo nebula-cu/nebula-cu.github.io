@@ -70,9 +70,21 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-lg-0">
+          <li class="nav-item me-3">
+            <a href="#about" class="nav-link btn btn-light" id="nav-about">About</a>
+          </li>
+          <li class="nav-item me-3">
+            <a href="#team" class="nav-link btn btn-light" id="nav-team">Team</a>
+          </li>
+          <li class="nav-item me-3">
+            <a href="#projects" class="nav-link btn btn-light" id="nav-projects">Projects</a>
+          </li>
+          <li class="nav-item me-3">
+            <a href="#publications" class="nav-link btn btn-light" id="nav-publications">Publications</a>
+          </li>
 
           <!-- Dynamic About Button -->
-          {% for page in site.pages %}
+          {% comment %} {% for page in site.pages %}
             {% if page.permalink == '/' %}
               {% assign about_title = "About" %}
             {% endif %}
@@ -103,25 +115,13 @@
                 </button>
               </li>
             {% endif %}
-          {% endfor %}
+          {% endfor %} {% endcomment %}
 
           <!-- Social Media Icons -->
           <li class="nav-item d-flex align-items-center">
             <div class="nav-item social-icons d-flex">
               {% if site.github_username %}
                 <a href="https://github.com/{{ site.github_username }}" title="GitHub" class="nav-link ms-2"><i class="fa-brands fa-github fa-lg"></i></a>
-              {% endif %}
-              {% if site.linkedin_username %}
-                <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" title="LinkedIn" class="nav-link ms-2"><i class="fa-brands fa-linkedin fa-lg"></i></a>
-              {% endif %}
-              {% if site.x_username %}
-                <a href="https://twitter.com/{{ site.x_username }}" title="X" class="nav-link ms-2"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
-              {% endif %}
-              {% if site.mastodon_username %}
-                <a rel="me" href="https://{{ site.mastodon_username }}" title="Mastodon" class="nav-link ms-2"><i class="fa-brands fa-mastodon fa-lg"></i></a>
-              {% endif %}
-              {% if site.medium_username %}
-                <a href="https://medium.com/@{{ site.medium_username }}" title="Medium" class="nav-link ms-2"><i class="fa-brands fa-medium fa-lg"></i></a>
               {% endif %}
             </div>
           </li>
