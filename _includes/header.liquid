@@ -29,15 +29,75 @@
     align-items: center;
     justify-content: center;
 }
+
+/* Non-active button (btn-light) */
+.nav-link.btn-light {
+  background-color: white; /* Light greenish-gray */
+  color: black !important;
+  border: 1.5px solid black;
+  transition: all 0.3s ease;
+}
+
+/* Hover or focus: btn-light takes on btn-dark characteristics */
+/* 
+.nav-link.btn-light:focus {
+  background-color: rgb(5, 28, 104);
+  color: black;
+  border: 1.5px solid black;
+} */
+
+.nav-link.btn-light:hover {
+  background-color: rgb(5, 28, 104); /* Dark gray-blue */
+  color: white !important;
+  border: 1.5px solid black;
+}
+
+/* Active button (btn-dark) */
+.nav-link.btn-dark {
+  background-color: rgb(5, 28, 104); /* Dark gray-blue */
+  color: white;
+  border: 1.5px solid black;
+  transition: all 0.3s ease;
+}
+
+/* Hover or focus: btn-dark takes on btn-light characteristics */
+/* .nav-link.btn-dark:hover {
+  background-color: rgb(204, 209, 205); /* Light greenish-gray 
+  color: black !important; 
+  border: 1.5px solid black;
+} */
+/* Ensure content starts after the navbar */
+body {
+  padding-top: 50px; /* Adjust this value based on your navbar height */
+}
+
+.navbar {
+  min-height: 80px; /* Consistent navbar height */
+}
+
+/* Optional: Adjusts for small screens */
+@media (max-width: 576px) {
+  body {
+    padding-top: 100px; /* Extra padding for smaller screens if needed */
+  }
+}
+
+.btn-white {
+  background-color: white;
+  color: black;
+  border: 1.5px solid black;
+}
 </style>
 
 <header>
+  {% comment %} rgb(71, 137, 218) {% endcomment %}
   <nav class="navbar navbar-expand fixed-top" 
-       role="navigation" style="background-color:rgb(204, 209, 205); padding: 0px;">
-    <div class="container" style="max-width: 1100px; padding: 0px; border-bottom: 2px solid black; height:80px; opacity:1;">
+       role="navigation" style="background-color:rgb(111, 168, 224); padding: 0px; border-bottom: 2px solid black; opacity: 1;">
+    <div class="container" style="max-width: 1100px; padding: 0px; height:80px; opacity:1;">
 
       <!-- Website Title with Nebula Logo and Columbia University Icon -->
-      <a class="navbar-brand d-flex align-items-center;" 
+      <span style="pointer-events: none; margin: 0 5px 5px 5px; padding: 0 5px; height: 70px; border: 2px black solid; border-radius: 8px; background-color: white;">
+      <a class="align-items-center;" 
          href="{{ site.baseurl }}/" 
          style="gap: 10px; font-size: 1.5rem; font-weight: 600; height: 80px; margin-right=0px; padding=0px">
 
@@ -54,7 +114,7 @@
           alt="Columbia University Icon"
           style="width: 40px; height:40px;">
       </a>
-
+      </span>
       <!-- Navbar Toggler for Mobile View -->
       <button
         class="navbar-toggler"
@@ -82,41 +142,6 @@
           <li class="nav-item me-3">
             <a href="#publications" class="nav-link btn btn-light" id="nav-publications">Publications</a>
           </li>
-
-          <!-- Dynamic About Button -->
-          {% comment %} {% for page in site.pages %}
-            {% if page.permalink == '/' %}
-              {% assign about_title = "About" %}
-            {% endif %}
-          {% endfor %}
-          <li class="nav-item me-3">
-            <button 
-              class="nav-link {% if page.url == '/' %}btn btn-dark{% else %}btn btn-light{% endif %}" 
-              onclick="window.location.href='{{ '/' | relative_url }}'">
-              {{- about_title }}
-            </button>
-          </li>
-
-          <!-- Other Pages (Sorted by nav_order) -->
-          {% assign sorted_pages = site.pages | sort: 'nav_order' %}
-          {% for p in sorted_pages %}
-            {% if p.nav and p.autogen == null %}
-              {% assign parent_link = p.permalink | remove: 'index.html' %}
-              <li class="nav-item me-3 {% if page.url contains parent_link %}active{% endif %}">
-                {% if p.permalink contains '/blog/' %}
-                  {% assign url = '/blog/' %}
-                {% else %}
-                  {% assign url = p.url %}
-                {% endif %}
-                <button 
-                  class="nav-link {% if page.url contains parent_link %}btn btn-dark{% else %}btn btn-light{% endif %}" 
-                  onclick="window.location.href='{{ url | relative_url }}'">
-                  {{- p.title }}
-                </button>
-              </li>
-            {% endif %}
-          {% endfor %} {% endcomment %}
-
           <!-- Social Media Icons -->
           <li class="nav-item d-flex align-items-center">
             <div class="nav-item social-icons d-flex">
