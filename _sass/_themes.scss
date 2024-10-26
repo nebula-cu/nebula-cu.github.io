@@ -5,7 +5,7 @@
 @use "sass:color";
 
 :root {
-  --global-bg-color: #{$white-color};
+  --global-bg-color: rgb(111, 168, 224); // Columbia light blue
   --global-code-bg-color: #{$code-bg-color-light};
   --global-text-color: #{$black-color};
   --global-text-color-light: rgb(71, 137, 218); // Columbia light blue
