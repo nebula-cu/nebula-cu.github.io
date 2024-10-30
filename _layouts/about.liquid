@@ -59,283 +59,184 @@ layout: default
 
     {% comment %} PROFILES {% endcomment %}
     <div id="team" class="section">
-    <section style="padding-top: 0;">
-      <div class="row match-height">
-        <div class="col-12 mt-3 mb-1">
-          <h2 class="section-title text-uppercase text-center">Our Team</h2>
-        </div>
+  <section style="padding-top: 0;">
+    {% comment %} <div class="row match-height">
+      <div class="col-12 mt-3 mb-1">
+        <h2 class="section-title text-uppercase text-center">Our Team</h2>
       </div>
-    
-      <div class="row justify-content-center">
-        {% assign members_per_row = 4 %}
-        {% assign total_profiles = site.members | size %}
-    
-        {% for profile in site.members %}
-          <!-- Logic to check if we need to start a new row -->
-          {% assign current_index = forloop.index0 %}
-          {% assign is_new_row = current_index | modulo: members_per_row %}
-    
+    </div> {% endcomment %}
+
+    <!-- Main Team Card -->
+    <div class="card mx-auto" style="max-width: 1200px; margin-top: 20px;">
+      
+      <div class="card-body">
+        <h2 class="card-title">Our Team</h2>
+        <div class="row justify-content-center">
+          {% assign members_per_row = 4 %}
+          {% for profile in site.members %}
+            {% assign current_index = forloop.index0 %}
+            {% assign is_new_row = current_index | modulo: members_per_row %}
+
+            <!-- Row break if needed -->
             {% if current_index != 0 and is_new_row == 0 %}
-            </div><div class="row justify-content-center" style="padding-bottom: 0px; margin-top: 0px;">
-          {% endif %}
-    
-          <!-- Profile Card -->
-          <div class="col-xl-3 col-md-4 col-sm-12" style="margin-bottom: 23px;">
-            <div class="card" style="min-height: 300px; margin-bottom: 0px; max-width: 400px;">
-              <div class="card-content" style="margin:5px;">
-                <!-- Profile Image -->
-                {% if profile.image %}
-                  <a href="{{ profile.web_site }}" target="_blank">
-                    <img 
-                      class="card-img-top img-fluid mx-auto d-block" 
-                      src="/assets/img/{{ profile.image }}" 
-                      alt="Photo of {{ profile.givenname }} {{ profile.surname }}" 
-                      style="width: 50%; height: auto; margin-top: 5px; margin-top: 5px; object-fit: cover; aspect-ratio: 1 / 1;"
-                    />
-                  </a>
-                {% endif %}
-    
-                <div class="card-body text-center" style="padding: 0px;">
-                  <a href="{{ profile.web_site }}" target="_blank" class="text-decoration-none">
-                    <h4 class="card-title" style="margin: 0px">{{ profile.givenname }} {{ profile.surname }}</h4>
-                  </a>
-    
-                  <p style="margin: 0px"> {{ profile.member_category }}</p>
-    
-                  <!-- Horizontal Separator -->
-                  <hr style="width: 50%; margin: 5px auto;" />
-    
-                  <p style="margin-bottom: 5px">{{ profile.interests }}</p>
-    
-                  <!-- Horizontal Separator -->
-                  <hr style="width: 50%; margin: 5px auto;" />
-    
-                  <!-- Social Icons -->
-                  <ul class="list-inline">
-                    {% if profile.github %}
-                      <li class="list-inline-item">
-                        <a href="https://github.com/{{ profile.github }}" target="_blank">
-                          <i class="fab fa-github fa-lg"></i>
-                        </a>
-                      </li>
-                    {% endif %}
-                    {% if profile.linkedin %}
-                      <li class="list-inline-item">
-                        <a href="https://linkedin.com/in/{{ profile.linkedin }}" target="_blank">
-                          <i class="fab fa-linkedin fa-lg"></i>
-                        </a>
-                      </li>
-                    {% endif %}
-                    {% if profile.twitter %}
-                      <li class="list-inline-item">
-                        <a href="https://twitter.com/{{ profile.twitter }}" target="_blank">
-                          <i class="fab fa-twitter fa-lg"></i>
-                        </a>
-                      </li>
-                    {% endif %}
-                    {% if profile.scholar %}
-                      <li class="list-inline-item">
-                        <a href="{{ profile.scholar }}" target="_blank">
-                          <i class="fas fa-graduation-cap fa-lg"></i>
-                        </a>
-                      </li>
-                    {% endif %}
-                    {% if profile.web_site %}
-                      <li class="list-inline-item">
-                        <a href="{{ profile.web_site }}" target="_blank">
-                          <i class="fas fa-globe fa-lg"></i>
-                        </a>
-                      </li>
-                    {% endif %}
-                  </ul>
+              </div><div class="row justify-content-center" style="padding-bottom: 0px; margin-top: 0px;">
+            {% endif %}
+
+            <!-- Smaller Profile Card inside Main Card -->
+            <div class="col-xl-3 col-md-4 col-sm-12" style="margin-bottom: 23px;">
+              <div class="card" style="min-height: 300px; margin-bottom: 0px; max-width: 400px;">
+                <div class="card-content" style="margin:5px;">
+                  {% if profile.image %}
+                    <a href="{{ profile.web_site }}" target="_blank">
+                      <img 
+                        class="card-img-top img-fluid mx-auto d-block" 
+                        src="/assets/img/{{ profile.image }}" 
+                        alt="Photo of {{ profile.givenname }} {{ profile.surname }}" 
+                        style="width: 50%; height: auto; margin-top: 5px; object-fit: cover; aspect-ratio: 1 / 1;"
+                      />
+                    </a>
+                  {% endif %}
+
+                  <div class="card-body text-center" style="padding: 0px;">
+                    <a href="{{ profile.web_site }}" target="_blank" class="text-decoration-none">
+                      <h4 class="card-title" style="margin: 0px">{{ profile.givenname }} {{ profile.surname }}</h4>
+                    </a>
+
+                    <p style="margin: 0px">{{ profile.member_category }}</p>
+                    <hr style="width: 50%; margin: 5px auto;" />
+                    <p style="margin-bottom: 5px">{{ profile.interests }}</p>
+                    <hr style="width: 50%; margin: 5px auto;" />
+
+                    <!-- Social Icons -->
+                    <ul class="list-inline">
+                      {% if profile.github %}
+                        <li class="list-inline-item">
+                          <a href="https://github.com/{{ profile.github }}" target="_blank">
+                            <i class="fab fa-github fa-lg"></i>
+                          </a>
+                        </li>
+                      {% endif %}
+                      {% if profile.linkedin %}
+                        <li class="list-inline-item">
+                          <a href="https://linkedin.com/in/{{ profile.linkedin }}" target="_blank">
+                            <i class="fab fa-linkedin fa-lg"></i>
+                          </a>
+                        </li>
+                      {% endif %}
+                      {% if profile.twitter %}
+                        <li class="list-inline-item">
+                          <a href="https://twitter.com/{{ profile.twitter }}" target="_blank">
+                            <i class="fab fa-twitter fa-lg"></i>
+                          </a>
+                        </li>
+                      {% endif %}
+                      {% if profile.scholar %}
+                        <li class="list-inline-item">
+                          <a href="{{ profile.scholar }}" target="_blank">
+                            <i class="fas fa-graduation-cap fa-lg"></i>
+                          </a>
+                        </li>
+                      {% endif %}
+                      {% if profile.web_site %}
+                        <li class="list-inline-item">
+                          <a href="{{ profile.web_site }}" target="_blank">
+                            <i class="fas fa-globe fa-lg"></i>
+                          </a>
+                        </li>
+                      {% endif %}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        {% endfor %}
+          {% endfor %}
+        </div>
       </div>
-    </section>
-    <div id="team" class="section">
-
-    <!-- Selected papers -->
-    <div id="projects" class="section">
-    {% if page.selected_papers %}
-      <div class="card w-100 mt-4">
-        <div class="card-header" style="padding-top: 10px; padding-bottom: 10px;">
-          <h2 class="card-title">
-            <a href="{{ '/publications/' | relative_url }}" style="color: inherit;">Selected Publications</a>
-          </h2>
-        </div>
-        <div class="card-body">
-          <div class="publications-list">
-            {% include selected_papers.liquid %}
-          </div>
-        </div>
-        {% comment %}
-        <div class="card-footer">
-          <a href="{{ '/publications/' | relative_url }}" class="btn btn-light-primary">View All Publications</a>
-        </div>
-        {% endcomment %}
-      </div>
-    {% endif %}
-
-
-    {% if site.newsletter.enabled and site.footer_fixed %}
-      {% include scripts/newsletter.liquid center=true %}
-    {% endif %}    {% if page.selected_papers %}
-      <div class="card w-100 mt-4">
-        <div class="card-header" style="padding-top: 10px; padding-bottom: 10px;">
-          <h2 class="card-title">
-            <a href="{{ '/publications/' | relative_url }}" style="color: inherit;">Selected Publications</a>
-          </h2>
-        </div>
-        <div class="card-body">
-          <div class="publications-list">
-            {% include selected_papers.liquid %}
-          </div>
-        </div>
-        {% comment %}
-        <div class="card-footer">
-          <a href="{{ '/publications/' | relative_url }}" class="btn btn-light-primary">View All Publications</a>
-        </div>
-        {% endcomment %}
-      </div>
-    {% endif %}
-
-    {% if site.newsletter.enabled and site.footer_fixed %}
-      {% include scripts/newsletter.liquid center=true %}
-    {% endif %}    {% if page.selected_papers %}
-      <div class="card w-100 mt-4">
-        <div class="card-header" style="padding-top: 10px; padding-bottom: 10px;">
-          <h2 class="card-title">
-            <a href="{{ '/publications/' | relative_url }}" style="color: inherit;">Selected Publications</a>
-          </h2>
-        </div>
-        <div class="card-body">
-          <div class="publications-list">
-            {% include selected_papers.liquid %}
-          </div>
-        </div>
-        {% comment %}
-        <div class="card-footer">
-          <a href="{{ '/publications/' | relative_url }}" class="btn btn-light-primary">View All Publications</a>
-        </div>
-        {% endcomment %}
-      </div>
-    {% endif %}
     </div>
-
-    <div id="publications" class="section">
-    {% if site.newsletter.enabled and site.footer_fixed %}
-      {% include scripts/newsletter.liquid center=true %}
-    {% endif %}    {% if page.selected_papers %}
-      <div class="card w-100 mt-4">
-        <div class="card-header" style="padding-top: 10px; padding-bottom: 10px;">
-          <h2 class="card-title">
-            <a href="{{ '/publications/' | relative_url }}" style="color: inherit;">Selected Publications</a>
-          </h2>
-        </div>
-        <div class="card-body">
-          <div class="publications-list">
-            {% include selected_papers.liquid %}
-          </div>
-        </div>
-        {% comment %}
-        <div class="card-footer">
-          <a href="{{ '/publications/' | relative_url }}" class="btn btn-light-primary">View All Publications</a>
-        </div>
-        {% endcomment %}
-      </div>
-
-    {% endif %}
-
-
-    {% if site.newsletter.enabled and site.footer_fixed %}
-      {% include scripts/newsletter.liquid center=true %}
-    {% endif %}    {% if page.selected_papers %}
-      <div class="card w-100 mt-4">
-        <div class="card-header" style="padding-top: 10px; padding-bottom: 10px;">
-          <h2 class="card-title">
-            <a href="{{ '/publications/' | relative_url }}" style="color: inherit;">Selected Publications</a>
-          </h2>
-        </div>
-        <div class="card-body">
-          <div class="publications-list">
-            {% include selected_papers.liquid %}
-          </div>
-        </div>
-        {% comment %}
-        <div class="card-footer">
-          <a href="{{ '/publications/' | relative_url }}" class="btn btn-light-primary">View All Publications</a>
-        </div>
-        {% endcomment %}
-      </div>
-    {% endif %}
-    </div>
-
-    {% if site.newsletter.enabled and site.footer_fixed %}
-      {% include scripts/newsletter.liquid center=true %}
-    {% endif %}
+  </section>
 </div>
+
+<!-- Selected papers -->
+<div id="projects" class="section">
+  {% if page.selected_papers %}
+    <div class="card w-100 mt-4">
+      <div class="card-header" style="padding-top: 10px; padding-bottom: 10px;">
+        <h2 class="card-title">
+          <a href="{{ '/publications/' | relative_url }}" style="color: inherit;">Select Publications</a>
+        </h2>
+      </div>
+      <div class="card-body">
+        <div class="publications-list">
+          {% include selected_papers.liquid %}
+        </div>
+      </div>
+      {% comment %}
+      <div class="card-footer">
+        <a href="{{ '/publications/' | relative_url }}" class="btn btn-light-primary">View All Publications</a>
+      </div>å
+      {% endcomment %}
+    </div>
+  {% endif %}
+</div>
+</div>
+
+    <div id="projects" class="section"></div>
 <script>
-  // Smooth scroll behavior on nav link click with offset for navbar
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault(); // Prevent default behavior of jumping to the section
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault(); // Prevent default anchor behavior
 
-      const targetSection = document.querySelector(this.getAttribute('href'));
-      const offset = 80; // Adjust this value based on your navbar height
-      const elementPosition = targetSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
+    const targetSection = document.querySelector(this.getAttribute('href'));
+    const offset = 80; // Adjust this value based on your navbar height
+    const elementPosition = targetSection.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - offset;
 
-      // Scroll smoothly to the section without manually changing the active nav state
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+    // Smooth scroll to the section
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
     });
   });
+});
 
-  // Function to update active navigation based on scroll position
-  function updateActiveNav() {
-    const sections = document.querySelectorAll('.section'); // Sections to monitor
-    const navLinks = document.querySelectorAll('.navbar-nav .nav-link'); // Nav links to highlight
-    const offset = 80; // Adjust this value based on your navbar height
-    const scrollPosition = window.pageYOffset + offset;
+// Function to update active navigation based on scroll position
+function updateActiveNav() {
+  const sections = document.querySelectorAll('.section'); // Add .section class to all your sections
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  const offset = 80; // Same offset to adjust for navbar height
+  const scrollPosition = window.pageYOffset + offset;
 
-    let currentSection = '';
+  let activeSection = ''; // Variable to store current active section
 
-    // Loop through each section to determine which is in view
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - offset; // Account for navbar height
-      const sectionBottom = sectionTop + section.offsetHeight;
+  // Loop through each section to determine which is in view
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - offset; // Account for navbar height
+    const sectionBottom = sectionTop + section.offsetHeight;
 
-      // Check if the scroll position is within the section bounds
-      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-        currentSection = section.getAttribute('id');
-      }
-    });
-
-    // If no section is detected (e.g., above the first section), set to the first section
-    if (!currentSection) {
-      currentSection = sections[0].getAttribute('id');
+    // Check if scroll position is within the section
+    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+      activeSection = section.getAttribute('id');
     }
+  });
 
-    // Update navigation links to reflect the current section
-    navLinks.forEach(link => {
-      link.classList.remove('btn-dark'); // Remove active class from all links
-      link.classList.add('btn-light');   // Add default class to all links
-      if (link.getAttribute('href') === `#${currentSection}`) {
-        link.classList.remove('btn-light'); // Highlight the active section
-        link.classList.add('btn-dark');
-      }
-    });
-  }
+  // Update nav link highlighting based on current active section
+  navLinks.forEach(link => {
+    link.classList.remove('btn-dark');
+    link.classList.add('btn-light');
 
-  // Event listener for scroll events to trigger active nav link updates
-  window.addEventListener('scroll', updateActiveNav);
+    if (link.getAttribute('href') === `#${activeSection}`) {
+      link.classList.remove('btn-light');
+      link.classList.add('btn-dark');
+    }
+  });
+}
 
-  // Handle initial load, page refresh, and window resizing
-  window.addEventListener('DOMContentLoaded', updateActiveNav);
-  window.addEventListener('resize', updateActiveNav);
+// Listen for scroll events and run the function to update the active nav item
+window.addEventListener('scroll', updateActiveNav);
+
+// Trigger the active nav update on initial page load or refresh
+window.addEventListener('DOMContentLoaded', updateActiveNav);
+
+// Ensure correct highlighting on window resize
+window.addEventListener('resize', updateActiveNav);
 </script>
