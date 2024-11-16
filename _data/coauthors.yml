@@ -32,3 +32,19 @@
 "planck":
   - firstname: ["Max"]
     url: https://en.wikipedia.org/wiki/Max_Planck
+
+"kaffes":
+  - firstname: ["Kostis"]
+    url: https://www.cs.columbia.edu/~kkaffes/index.html
+
+"jabrayilov":
+  - firstname: ["Vahab"]
+    url: https://vjabrayilov.github.io
+
+"liargkovas":
+  - firstname: ["Giorgos"]
+    url: https://liargkovas.com
+
+"pagonas":
+  - firstname: ["Nikos"]
+    url: https://nikpag.github.io

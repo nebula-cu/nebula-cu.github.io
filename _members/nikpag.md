@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Nikos Pagonas
-joined_date: 20240822
-date: 20241019
+joined_date: 20240823
+date: 20240823
 category: members
 member_category: PhD Student
 id: m_nikpag

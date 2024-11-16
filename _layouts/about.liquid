@@ -15,22 +15,26 @@ layout: default
           <div class="card-body">
             <h2 class="card-title">About Us</h2>
             <p class="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              <p>
+                The Nebula group focuses on creating high-performance computer systems for the modern cloud era.
+              </p>
+
+              <p>Our research includes:</p>
+
+              <ul>
+              <li>providing lightning-fast virtualization and scheduling</li>
+              <li>building large-scale machine learning applications</li>
+              <li>using cutting-edge machine learning techniques to augment existing systems</li>
+              </ul>
               </p>
               <div class="text-center">
-                <img 
-                class="img-fluid w-50" 
-                src="/assets/img/prof_pic.jpg" 
+                <img
+                class="img-fluid w-50"
+                src="/assets/img/prof_pic.jpg"
                 alt="Profile Picture">
               </div>
               <p class="card-text"></p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
             </p>
           </div>
         </div>
@@ -68,7 +72,7 @@ layout: default
 
     <!-- Main Team Card -->
     <div class="card mx-auto" style="max-width: 1200px; margin-top: 20px;">
-      
+
       <div class="card-body">
         <h2 class="card-title">Our Team</h2>
         <div class="row justify-content-center">
@@ -88,10 +92,10 @@ layout: default
                 <div class="card-content" style="margin:5px;">
                   {% if profile.image %}
                     <a href="{{ profile.web_site }}" target="_blank">
-                      <img 
-                        class="card-img-top img-fluid mx-auto d-block" 
-                        src="/assets/img/{{ profile.image }}" 
-                        alt="Photo of {{ profile.givenname }} {{ profile.surname }}" 
+                      <img
+                        class="card-img-top img-fluid mx-auto d-block"
+                        src="/assets/img/{{ profile.image }}"
+                        alt="Photo of {{ profile.givenname }} {{ profile.surname }}"
                         style="width: 50%; height: auto; margin-top: 5px; object-fit: cover; aspect-ratio: 1 / 1;"
                       />
                     </a>
@@ -162,7 +166,7 @@ layout: default
     <div class="card w-100 mt-4">
       <div class="card-header" style="padding-top: 10px; padding-bottom: 10px;">
         <h2 class="card-title">
-          <a href="{{ '/publications/' | relative_url }}" style="color: inherit;">Select Publications</a>
+          <a href="{{ '/publications/' | relative_url }}" id="publications" style="color: inherit;">Select Publications</a>
         </h2>
       </div>
       <div class="card-body">

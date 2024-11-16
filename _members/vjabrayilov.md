@@ -1,26 +1,22 @@
 ---
 layout: post
-title: Georgios Liargkovas
-joined_date: 20200529
+title: Vahab Jabrayilov
+joined_date: 20230901
 date: 20230902
 category: members
-member_category: Researchers
-id: m_gliargovas
-givenname: Georgios
-surname: Liargkovas
-email: gliargovas@aueb.gr
-web_site: https://liargkovas.com
-web_log: http://liargkovas.com/blog/
-github: gliargovas
-linkedin: george-liargovas-796259175
-twitter: gliargko
-image: 1.jpg
-interests: OS Scheduling, Cloud Computing, ML for Systems
+member_category: PhD Student
+id: m_vjabrayilov
+givenname: Vahab
+surname: Jabrayilov
+email: jabrayilov.vahab@gmail.com
+web_site: https://vjabrayilov.github.io
+web_log: https://vjabrayilov.github.io
+github: vjabrayilov
+linkedin: vjabrayilov
+twitter: vjabrayilov7
+image: vjabrayilov.jpeg
+interests: Computer Systems, Cloud Computing
 summary: >
-  Georgios Liargkovas will be pursuing a PhD in OS scheduling and cloud computing, with 
-  a focus on distributed and serverless architectures, at Columbia University, 
-  advised by Prof. Kostis Kaffes. He graduated with a Bachelor's degree in Software 
-  Engineering and Data Science from the Department of Management Science and 
-  Technology at Athens University of Economics and Business.
+  Vahab Jabrayilov is a first-year Ph.D. student in Computer Science at Columbia University advised by Kostis Kaffes. He is broadly interested in computer systems, especially cloud computing. He is looking for ways to implement and deploy systems for microsecond-scale tail latency across different layers of the stack. He received his bachelor’s degree at Middle East Technical University.
 related_posts: false
 ---
