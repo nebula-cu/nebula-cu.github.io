@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Kostis Kaffes
-joined_date: 20230901
-date: 20230901
+joined_date: 20230701
+date: 20230701
 category: members
-member_category: Professor
+member_category: Assistant Professor
 id: m_kkaffes
 givenname: Kostis
 surname: Kaffes
@@ -15,7 +15,7 @@ github: kkaffes
 linkedin: kkaffes
 twitter: kkaffes
 image: kkaffes.jpg
-interests: OS Scheduling
+interests: Cloud Systems
 summary: >
 related_posts: false
 ---
