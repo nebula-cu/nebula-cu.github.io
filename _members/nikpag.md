@@ -15,7 +15,7 @@ github: nikpag
 linkedin: nikospagonas
 twitter: nikospagonas00
 image: nikpag.png
-interests: Systems for ML, Cloud Computing, Distributed Systems, Operating Systems
+interests: Systems for ML, Cloud Computing
 summary: >
   Nikos Pagonas is currently working on improving the performance of LLM
   inference systems. He graduated with a Master's degree in Electrical and
